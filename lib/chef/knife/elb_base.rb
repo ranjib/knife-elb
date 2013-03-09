@@ -17,20 +17,26 @@
 #
 
 require 'chef/knife'
+require 'chef/knife/ec2_base'
 
 class Chef
   class Knife
-    module ELBBase
+    module ElbBase
 
-      extend Ec2Base
+      def self.included(includer)
+        includer.class_eval do
+          include Ec2Base
 
-      def connection
-        @connection ||= begin
-          connection = Fog::AWS::ELB.new(
-            :aws_access_key_id => Chef::Config[:knife][:aws_access_key_id],
-            :aws_secret_access_key => Chef::Config[:knife][:aws_secret_access_key],
-            :region => locate_config_value(:region)
-          )
+          def connection
+            @connection ||= begin
+              connection = Fog::AWS::ELB.new(
+                :aws_access_key_id => Chef::Config[:knife][:aws_access_key_id],
+                :aws_secret_access_key => Chef::Config[:knife][:aws_secret_access_key],
+                :region => locate_config_value(:region)
+              )
+            end
+          end
+
         end
       end
     end

@@ -18,14 +18,13 @@
 #
 
 require 'chef/knife'
-require 'chef/knife-ec2'
 require 'chef/knife/ec2_base'
 
 class Chef
   class Knife
     class ElbList < Knife
       
-      include  Knife::Ec2Base
+      include  Knife::ElbBase
 
       banner "knife elb list"
 
@@ -49,9 +48,9 @@ class Chef
           elb_list << begin
             count = elb.instances.size
             if count == 0
-              ui.color(count, :red)
+              ui.color(count.to_s, :red)
             else
-              ui.color(count, :green)
+              ui.color(count.to_s, :green)
             end
           end
           elb_list << elb.created_at.to_s
