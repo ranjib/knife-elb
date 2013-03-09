@@ -18,7 +18,7 @@
 #
 
 require 'chef/knife'
-require 'chef/knife/ec2_base'
+require 'chef/knife/elb_base'
 
 class Chef
   class Knife
