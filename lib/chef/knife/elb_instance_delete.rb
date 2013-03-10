@@ -41,6 +41,7 @@ class Chef
           exit(1)
         end  
 
+        ui.confirm("Are you sure you want to delete this instance from the ELB?")
         elbs.first.deregister_instances(instance)
         ui.info("Instance removed")
       end  

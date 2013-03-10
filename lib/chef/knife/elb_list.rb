@@ -35,7 +35,8 @@ class Chef
         elb_list = [
           ui.color('ELB Id', :bold),
           ui.color('DNS', :bold),
-          ui.color('Number of instances', :bold),
+          ui.color('Total instances', :bold),
+          ui.color('Active instances', :bold),
           ui.color('Created At', :bold),
           ui.color('Zones', :bold)
         ].flatten.compact
@@ -43,16 +44,23 @@ class Chef
         output_column_count = elb_list.length
         
         connection.load_balancers.each do |elb|
+
+          total_instances = elb.instances.size
+          instances_in_service = elb.instances_in_service.size
+
           elb_list << elb.id.to_s
           elb_list << elb.dns_name
-          elb_list << begin
-            count = elb.instances.size
-            if count == 0
-              ui.color(count.to_s, :red)
-            else
-              ui.color(count.to_s, :green)
-            end
-          end
+
+          elb_list << if total_instances == 0
+                        ui.color(total_instances.to_s, :red)
+                      else
+                        ui.color(total_instances.to_s, :green)
+                      end
+          elb_list << if (instances_in_service  != total_instances)
+                        ui.color(instances_in_service.to_s, :red)
+                      else
+                        ui.color(instances_in_service.to_s, :green)
+                      end
           elb_list << elb.created_at.to_s
           elb_list << elb.availability_zones.join(',')
         end

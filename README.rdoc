@@ -44,6 +44,7 @@ Delete an instance to an exitsing elb
 
 
 
+knife elb does not create or delete elbs. or  listener configurations.
 = LICENSE:
 
 Author:: Ranjib Dey (<dey.ranjib@gmail.com>)

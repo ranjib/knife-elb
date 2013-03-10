@@ -40,7 +40,7 @@ class Chef
           ui.error("No ELB with id #{elb_id} found")
           exit(1)
         end  
-
+        ui.confirm("Are you sure you want to add this instance in the ELB?")
         elbs.first.register_instances(instance)
         ui.info("Instance added")
       end  

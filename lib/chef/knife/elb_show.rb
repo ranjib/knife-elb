@@ -19,7 +19,6 @@
 
 require 'chef/knife'
 require 'chef/knife/elb_base'
-require 'json'
 
 class Chef
   class Knife
@@ -39,7 +38,7 @@ class Chef
           ui.error("No load balancer with id  #{@name_args.first} found")
           exit 1
         end
-        ui.output(JSON.parse(elbs.first.to_json))
+        ui.output(Chef::JSONCompat.from_json(elbs.first.to_json))
       end  
     end
   end
