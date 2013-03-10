@@ -19,9 +19,7 @@
 require 'bundler'
 Bundler::GemHelper.install_tasks
 
-# require 'rubygems'
-# require 'rake/gempackagetask'
-
+require 'rubygems/package_task'
 
 begin
   require 'rspec/core/rake_task'
