@@ -6,20 +6,23 @@ A knife plugin for managing instances under ELB
 
 = INSTALLATION:
 
-This plugin depends upon the knife-ec2 plugin
-
 Be sure you are running the latest version Chef. Versions earlier than 0.10.0 don't support plugins:
 
     gem install chef
+
+This plugin depends upon the knife-ec2 plugin
+
+    gem install knife-ec2
 
 This plugin is distributed as a Ruby Gem. To install it, run:
 
     gem install knife-elb
 
-Depending on your system's configuration, you may need to run this command with root privileges.
+Note: Depending on your system's configuration, you may need to run this command with root/ sudo privileges.
 
 = CONFIGURATION:
 Ditto as knife-ec2 configuration. i.e. put you aws credentials in knife.rb or pass them as command line arguments
+{knife-ec2}[https://github.com/opscode/knife-ec2]
 
 
 = SUBCOMMANDS:
@@ -30,25 +33,29 @@ This  plugin provides following knife subcommands
 
 Lists all the ELBs
 
-== knife elb show
+== knife elb show ELB
 
-Shows the details of a given ELB
+    knife elb show infra-staging
+Shows the details of a specified load-balancer e.g. infra-staging
+Where, ELB is exitsing ELB-ID
 
-== knife elb instance add 
+== knife elb instance add ELB INSTANCE_ID
 
-Add an instance to an exitsing elb
+    knife elb instance add infra-staging i-dg12b7bd
+This will add an instance with INSTANCE_ID (i-dg12b7bd) to an exitsing ELB-ID (infra-staging)
 
 == knife elb instance delete 
 
-Delete an instance to an exitsing elb
+    knife elb instance delete infra-staging i-dg12b7bd
+This will detach instance with INSTANCE_ID (i-dg12b7bd) from an exitsing ELB-ID (infra-staging)
 
 
 
-knife elb does not create or delete elbs. or  listener configurations.
+Note: knife elb does not create & delete elbs or change listener configurations.
 = LICENSE:
 
 Author:: Ranjib Dey (<dey.ranjib@gmail.com>)
-Copyright:: Copyright (c) 20013.
+Copyright:: Copyright (c) 2013.
 License:: Apache License, Version 2.0
 
 Licensed under the Apache License, Version 2.0 (the "License");
