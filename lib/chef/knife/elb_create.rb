@@ -28,7 +28,7 @@ class Chef
 
       option :availability_zones,
              :long => '--availability-zones eu-west-1a[,eu-west-1b,eu-west-1c]',
-             :description => 'The ELB availability zones',
+             :description => 'The ELB availability zones (default eu-west-1a)',
              :default => ['eu-west-1a'],
              :proc => Proc.new { |i| i.to_s.split(',') }
 

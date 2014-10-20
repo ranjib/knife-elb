@@ -23,25 +23,25 @@ class Chef
         includer.class_eval do
           option :listener_proto,
                  :long => '--listener-protocol HTTP',
-                 :description => 'Listener protocol (available: HTTP, HTTPS, TCP, SSL)',
+                 :description => 'Listener protocol (available: HTTP, HTTPS, TCP, SSL) (default HTTP)',
                  :default => 'HTTP',
                  :proc => Proc.new { |i| i.to_s.upcase }
 
           option :listener_instance_proto,
                  :long => '--listener-instance-protocol HTTP',
-                 :description => 'Instance connection protocol (available: HTTP, HTTPS, TCP, SSL)',
+                 :description => 'Instance connection protocol (available: HTTP, HTTPS, TCP, SSL) (default HTTP)',
                  :default => 'HTTP',
                  :proc => Proc.new { |i| i.to_s.upcase }
 
           option :listener_lb_port,
                  :long => '--listener-lb-port 80',
-                 :description => 'Listener load balancer port',
+                 :description => 'Listener load balancer port (default 80)',
                  :default => 80,
                  :proc => Proc.new { |i| i.to_i }
 
           option :listener_instance_port,
                  :long => '--listener-instance-port 80',
-                 :description => 'Instance port to forward traffic to',
+                 :description => 'Instance port to forward traffic to (default 80)',
                  :default => 80,
                  :proc => Proc.new { |i| i.to_i }
 

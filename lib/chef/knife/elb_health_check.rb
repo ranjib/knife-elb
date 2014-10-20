@@ -28,25 +28,25 @@ class Chef
 
       option :healthy_threshold,
              :long => '--healthy-threshold INT',
-             :description => 'Number of consecutive health probe successes before moving instance to healthy',
+             :description => 'Number of consecutive health probe successes before moving instance to healthy (default 2)',
              :default => 2,
              :proc => Proc.new { |i| i.to_i }
 
       option :unhealthy_threshold,
              :long => '--unhealthy-threshold INT',
-             :description => 'Number of consecutive health probe failures before moving instance to unhealthy',
+             :description => 'Number of consecutive health probe failures before moving instance to unhealthy (default 2)',
              :default => 2,
              :proc => Proc.new { |i| i.to_i }
 
       option :check_interval,
              :long => '--check-interval SECONDS',
-             :description => 'Health check interval in seconds',
+             :description => 'Health check interval in seconds (default 30)',
              :default => 30,
              :proc => Proc.new { |i| i.to_i }
 
       option :check_timeout,
              :long => '--check-timeout SECONDS',
-             :description => 'Health check timeout in seconds',
+             :description => 'Health check timeout in seconds (default 10)',
              :default => 10,
              :proc => Proc.new { |i| i.to_i }
 
