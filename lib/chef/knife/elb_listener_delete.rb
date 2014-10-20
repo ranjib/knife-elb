@@ -39,7 +39,7 @@ class Chef
       def validate!
         super
 
-        unless @name_args.size < 2
+        if @name_args.size < 2
           ui.error('Please specify the ELB ID and the listener PORT to remove')
           exit 1
         end
