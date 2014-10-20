@@ -27,8 +27,6 @@ class Chef
       banner 'knife elb listener add ELB (options)'
 
       def run
-        $stdout.sync = true
-
         validate!
 
         response = connection.create_load_balancer_listeners(@name_args.first, build_listeners(config))

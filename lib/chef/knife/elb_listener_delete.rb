@@ -25,8 +25,6 @@ class Chef
       banner 'knife elb listener delete ELB PORT'
 
       def run
-        $stdout.sync = true
-
         validate!
 
         response = connection.delete_load_balancer_listeners(@name_args.shift, @name_args)

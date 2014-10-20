@@ -25,8 +25,6 @@ class Chef
       banner 'knife elb delete ELB'
 
       def run
-        $stdout.sync = true
-
         validate!
 
         response = connection.delete_load_balancer(@name_args.first)

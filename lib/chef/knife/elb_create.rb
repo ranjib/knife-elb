@@ -33,8 +33,6 @@ class Chef
              :proc => Proc.new { |i| i.to_s.split(',') }
 
       def run
-        $stdout.sync = true
-
         validate!
 
         response = connection.create_load_balancer(

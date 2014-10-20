@@ -56,8 +56,6 @@ class Chef
              :proc => Proc.new { |i| i.to_s }
 
       def run
-        $stdout.sync = true
-
         validate!
 
         response = connection.configure_health_check(@name_args.first, build_health_check(config))
