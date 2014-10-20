@@ -29,7 +29,6 @@ class Chef
       banner "knife elb list"
 
       def run
-        $stdout.sync = true
         validate!
 
         elb_list = [
